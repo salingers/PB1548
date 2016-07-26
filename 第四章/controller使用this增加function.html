@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function() {
+        var app = angular.module('myApp', []);
+        app.controller('MainController', [function() {
+          this.sayHello = function(name) {
+            return name || "world!!";
+          };
+        }]);
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="MainController as main">
+      Hello, {{main.sayHello()}}
+      <br>
+      Hello, {{main.sayHello('Jack')}}
+    </div>
+  </body>
+</html>

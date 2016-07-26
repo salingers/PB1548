@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module('myApp', []);
+        app.controller('myController', ['$http', function($http) {
+          var self = this;
+          self.url = 'http://www.w3schools.com/angular/customers.php';
+          $http({
+            method: 'GET',
+            url: self.url,
+          }).then(function(response) {
+            // 請求成功時執行的程式碼
+            self.data = response.data.records;
+            console.log(self.data);
+          }, function(response) {
+            // 請求失敗時執行的程式碼
+            alert(" 取得資料失敗 ");
+          });
+        }]);
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="myController as myCtrl">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Country</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="data in myCtrl.data">
+          <tr>
+            <td>{{data.Name}}</td>
+            <td>{{data.City}}</td>
+            <td>{{data.Country}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

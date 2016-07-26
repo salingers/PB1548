@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module('myApp', []);
+        app.controller('myController', ['$interval', function($interval) {
+          var self = this;
+          self.count = 0;
+          // 計數器功能
+          self.counter = function() {
+            self.count++;
+          };
+          // 啟動計數器
+          self.interval = $interval(self.counter, 1000);
+          // 停止計數器
+          self.stop = function() {
+            $interval.cancel(self.interval);
+          };
+        }]);
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="myController as myCtrl">
+      {{myCtrl.count}}
+      <button ng-click="myCtrl.stop()">STOP</button>
+    </div>
+  </body>
+</html>

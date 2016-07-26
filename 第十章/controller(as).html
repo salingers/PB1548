@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module('myApp', []);
+        app.directive('directiveHello', function() {
+          return {
+            restrict: 'E',
+            template: '<div>{{hello.hi}},test</div>',
+            priority: 1,
+            controllerAs: 'hello',
+            controller: 'HelloController'
+          };
+        });
+        app.controller('HelloController', function() {
+          this.hi = 'Hello';
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <directive-hello>Hello,</directive-hello>
+  </body>
+</html>

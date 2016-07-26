@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html ng-app="FilterTest">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module("FilterTest", []);
+        app.controller('FilterController', function() {
+          var self = this;
+          self.Dtime = new Date().getTime();
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="FilterController as filter">
+      <div>
+        Date Time：{{filter.Dtime | date}}
+        <br/> Date Time：{{filter.Dtime | date:"yyyy/MM/dd"}}
+      </div>
+    </div>
+  </body>
+</html>

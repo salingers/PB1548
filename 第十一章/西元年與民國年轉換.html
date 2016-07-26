@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module('myApp', []);
+        app.controller('FilterController', [function() {
+          this.date = new Date(); // 設定 date 等於現在日期
+        }]);
+        app.filter('dateToRoc', function() {
+          return function(date) { //date 是傳進來的資料
+            // 取得 date 的年，然後 -1911
+            var Year = (date.getFullYear() - 1911).toString();
+            // 取得月，因為從 0 開始要 +1
+            var Month = (date.getMonth() + 1).toString();
+            // 取得日
+            var Day = date.getDate().toString();
+            return ' 民國 ' + Year + ' 年 ' + Month + ' 月 ' + Day + ' 日 ';
+          };
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="FilterController as filter">
+      請輸入日期：
+      <input type="date" ng-model="filter.date" />
+      <div>
+        輸入的日期 ={{filter.date | date:"yyyy/MM/dd"}}
+        <!--yyyy/MM/dd 日期格式 -->
+      </div>
+      輸入的日期 ={{filter.date | dateToRoc}}
+    </div>
+  </body>
+</html>

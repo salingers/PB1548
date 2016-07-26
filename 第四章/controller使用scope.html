@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module('myApp',[]);
+        app.controller('MainController',['$scope',function($scope){
+          $scope.data = "world!!";
+        }]);
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="MainController">
+      Hello, {{data}}
+      <br>
+      <input type="text" ng-model="data">
+    </div>
+  </body>
+</html>

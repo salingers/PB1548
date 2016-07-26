@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function() {
+        var app = angular.module('myApp', []);
+        app.controller('Child1Controller', ['$rootScope', function($rootScope) {
+          $rootScope.data = "Child1!!";
+        }]);
+        app.controller('Child2Controller', ['$rootScope', function($rootScope) {
+          $rootScope.data = "Child2!!";
+        }]);
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="Child1Controller">
+      This is a {{data}}
+      <br>
+      Child1 data : <input type="text" ng-model="data">
+      <hr>
+    </div>
+    <div ng-controller="Child2Controller">
+      This is a {{data}}
+      <br>
+      Child2 data : <input type="text" ng-model="data">
+      <hr>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module('myApp', []);
+        app.controller('FilterController', function() {
+          var self = this;
+          self.gal = 0; // 先將 gal 設為 0
+          self.L = 0; // 先將 L 設為 0
+        });
+        app.filter('galToL', ['$filter', function($filter) {
+          return function(num, reversion) { //num 為傳進來的資料，reversion 為參數
+            if (isNaN(num)) return;
+            num = num * 1;
+            var resultNum = 0; // 預設結果為 0
+            var fn = 3.7854; // 換算的數值
+            if (reversion) {
+              // 輸入的數字除換算的數值
+              resultNum = num / fn;
+            } else {
+              // 輸入的數字乘換算的數值
+              resultNum = num * fn;
+            }
+            return $filter('number')(resultNum, 4) + ((reversion) ? ' 加侖 (gal)' : ' 公升 (L)');
+          };
+        }]);
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="FilterController as filter">
+      <input type="number" ng-model="filter.gal" min="0" />
+      <span> 公升 (L)=
+        {{filter.gal | galToL: true }}</span>
+      <!--true 為參數，用來判斷為公升轉加侖 -->
+      <br/>
+      <input type="number" ng-model="filter.L" min="0" />
+      <span> 加侖 (gal)=
+        {{filter.L | galToL }}</span>
+      <!--filter 沒有加參數的話，即加侖轉公升 -->
+    </div>
+
+  </body>
+</html>

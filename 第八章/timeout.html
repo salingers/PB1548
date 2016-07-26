@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module('myApp', []);
+        app.controller('myController', ['$timeout', function($timeout) {
+          var self = this;
+          self.count = 0;
+          // 計數器功能
+          self.counter = function() {
+            self.count++;
+            // 重複呼叫
+            self.timeout = $timeout(self.counter, 1000);
+          };
+          // 啟動計數器
+          self.timeout = $timeout(self.counter, 1000);
+          // 停止計數器
+          self.stop = function() {
+            $timeout.cancel(self.timeout);
+          };
+        }]);
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="myController as myCtrl">
+      {{myCtrl.count}}
+      <button ng-click="myCtrl.stop()">STOP</button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function() {
+        var app = angular.module('myApp', []);
+        app.controller('AngularController', function() {
+          this.mouseOver = false;
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="AngularController as angular" >
+      <p ng-mouseover="angular.mouseOver=true"
+         ng-mouseleave="angular.mouseOver=false"> 請將滑鼠已移到這裡 </p>
+      <p ng-show="angular.mouseOver"> 滑鼠滑入才會顯示的字串 </p>
+    </div>
+  </body>
+</html>

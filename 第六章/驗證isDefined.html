@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module('myApp', []);
+        app.controller('TestController', function() {
+          var foo;
+          var bar = 42;
+          console.log(angular.isDefined(foo));
+          console.log(angular.isDefined(bar));
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="TestController">
+      結果觀看console
+    </div>
+  </body>
+</html>

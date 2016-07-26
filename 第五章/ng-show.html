@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function() {
+        var app = angular.module('myApp', []);
+        app.controller('AngularController', function() {
+          this.isTrue = true;
+          this.isFalse = false;
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="AngularController as angular">
+      <div ng-show="angular.isTrue"> 這是 ng-show 為 true 的頁面 </div>
+      <div ng-show="angular.isFalse"> 這是 ng-show 為 false 的頁面 </div>
+      <div ng-hide="angular.isTrue"> 這是 ng-hide 為 true 的頁面 </div>
+      <div ng-hide="angular.isFalse"> 這是 ng-hide 為 false 的頁面 </div>
+    </div>
+  </body>
+</html>

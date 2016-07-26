@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module('myApp', []);
+        app.directive('directiveHello', function() {
+          return {
+            restrict: 'E',
+            compile: function(element, attrs) {
+              var type = attrs.type || 'button';
+              var val = attrs.value;
+              var css = (type === 'button') ? ('btn-info') : ('');
+              var show = '<input type=' + type + ' value=' + val + ' class=' + css + ' />';
+              element.replaceWith(show); // 將 Directive 的 element 轉成自訂的 show 做顯示
+            }
+          };
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <directive-hello></directive-hello>
+  </body>
+</html>

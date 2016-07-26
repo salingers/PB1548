@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function() {
+        var app = angular.module('myApp', []);
+        app.controller('AngularController', function() {
+          this.myOptions = [{
+            type: ' 武器 ',
+            name: ' 木劍 ',
+            price: 500
+          }, {
+            type: ' 武器 ',
+            name: ' 鐵劍 ',
+            price: 1000
+          }, {
+            type: ' 盔甲 ',
+            name: ' 木盔甲 ',
+            price: 500
+          }, {
+            type: ' 盔甲 ',
+            name: ' 鐵盔甲 ',
+            price: 1000
+          }];
+          this.select = '';
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="AngularController as angular" >
+      <select name='options' ng-model="angular.select" ng-options="item.name as item.
+                                                                   name + ' -- ' + item.price for item in angular.myOptions">
+        <option value="">----- 請選擇 -----</option>
+      </select>
+      {{angular.select}}
+    </div>
+  </body>
+</html>

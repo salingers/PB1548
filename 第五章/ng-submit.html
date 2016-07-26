@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function() {
+        var app = angular.module('myApp', []);
+        app.controller('AngularController', function() {
+          this.items = [];
+          this.red = 0;
+          this.blue = 0;
+          this.submit = function() {
+            this.items.push({
+              red: this.red,
+              blue: this.blue
+            });
+          };
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="AngularController as angular">
+      <form ng-submit="angular.submit()">
+        <label> 紅藥水 </label>
+        請輸入購買數量：
+        <input type="text" ng-model="angular.red" />
+        <br/>
+        <label> 藍藥水 </label>
+        請輸入購買數量：
+        <input type="text" ng-model="angular.blue" />
+        <br/>
+        <input type="submit" value=" 購買 " />
+      </form>
+      <p ng-repeat="item in angular.items">
+        物品：紅藥水 {{item.red}}，藍藥水 {{item.blue}}
+      </p>
+    </div>
+  </body>
+</html>

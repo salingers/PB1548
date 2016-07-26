@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module('myApp', []);
+        app.controller('TestController', function() {
+          var ct = angular.isNumber(509);
+          var dt = angular.isNumber(new Date());
+          console.log(ct);
+          console.log(dt);
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="TestController">
+      結果觀看console
+    </div>
+  </body>
+</html>

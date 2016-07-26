@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module('myApp', []);
+        app.directive('directiveHello', function() {
+          return {
+            restrict: 'E',
+            template: '<div>test</div>',
+            priority: 1,
+            replace: true
+          };
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <directive-hello></directive-hello>
+  </body>
+</html>

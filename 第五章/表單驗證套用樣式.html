@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <style>
+      /* 當不符合 email 格式顯示紅框 */
+      input.ng-invalid-email {
+        border: 1px solid red;
+      }
+      /* 當驗證成功顯示綠框 */
+      input.ng-valid {
+        border: 1px solid green;
+      }
+      /* 當輸入過資料且未通過驗證顯示粉紅色背景 */
+      input.ng-dirty.ng-invalid {
+        background: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="form1">
+      E-mail：
+      <input type="email" name="email" ng-model="emailData" required />
+    </form>
+  </body>
+</html>

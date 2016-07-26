@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html ng-app="book">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var book = angular.module('book',[]);
+        book.controller('bookController',['$scope',function($scope){
+          $scope.data = "This is a book!";
+        }]);
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="bookController">
+      {{data}}
+    </div>
+  </body>
+</html>

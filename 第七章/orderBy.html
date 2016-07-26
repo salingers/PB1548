@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html ng-app="FilterTest">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <script>
+      (function(){
+        var app = angular.module("FilterTest", []);
+        app.controller('FilterController', [function() {
+          this.friends = [{
+            name: 'John',
+            age: 10
+          }, {
+            name: 'Eric',
+            age: 35
+          }, {
+            name: 'Mary',
+            age: 29
+          }];
+        }]);
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="FilterController as filter">
+      <table class="friend">
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+        <!-- 由小到大排序 -->
+        <tr ng-repeat="friend in filter.friends | orderBy:'age'">
+          <td>{{friend.name}}</td>
+          <td>{{friend.age}}</td>
+        </tr>
+      </table>
+      <table class="friend">
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+        <!-- 由大到小排序 -->
+        <tr ng-repeat="friend in filter.friends | orderBy:'-age'">
+          <td>{{friend.name}}</td>
+          <td>{{friend.age}}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

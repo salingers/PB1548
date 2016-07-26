@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <style>
+      .red {
+        color: red;
+      }
+      .blue {
+        color: blue;
+      }
+    </style>
+    <script>
+      (function() {
+        var app = angular.module('myApp', []);
+        app.controller('AngularController', function() {
+          this.isTrue = true;
+          this.isFalse = false;
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div ng-controller="AngularController as angular">
+      <div ng-class="{true: 'red', false:'blue'}[angular.isTrue]"> 
+        為 true 時字體為紅色 
+      </div>
+      <div ng-class="{true: 'red', false:'blue'}[angular.isFalse]"> 
+        為 false 時字體為藍色 
+      </div>
+    </div>
+  </body>
+</html>
