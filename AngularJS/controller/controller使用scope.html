@@ -10,9 +10,12 @@
 	{
 		var app = angular.module('myApp',
 		[]);
+
 		app.controller('MainController',
 		[ '$scope', function($scope)
 		{
+			$scope.data = "world!!";
+
 			$scope.sayHello = function(name)
 			{
 				name = name || "world!!";
@@ -24,6 +27,7 @@
 </head>
 <body>
 	<div ng-controller="MainController">
+		Hello, {{data}} <br> <input type="text" ng-model="data">
 		{{sayHello()}} <br> {{sayHello('Jack')}}
 	</div>
 </body>

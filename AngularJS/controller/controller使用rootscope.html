@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html ng-app="myApp">
 <head>
 <script
@@ -10,17 +10,22 @@
 	{
 		var app = angular.module('myApp',
 		[]);
-		app.controller('MainController',
-		[ function()
+
+		app.controller('Child1Controller',
+		[ '$rootScope', function($rootScope)
 		{
-			this.data = "world!!";
+			$rootScope.data = "Child1!!";
 		} ]);
+
 	})();
 </script>
 </head>
 <body>
-	<div ng-controller="MainController as main">
-		Hello, {{main.data}} <br> <input type="text" ng-model="main.data">
+	<div ng-controller="Child1Controller">
+		This is a {{data}} <br> Child1 data : <input type="text"
+			ng-model="data">
+		<hr>
 	</div>
+
 </body>
 </html>
