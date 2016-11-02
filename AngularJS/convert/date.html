@@ -10,23 +10,19 @@
 	{
 		var app = angular.module("FilterTest",
 		[]);
-		app.controller('FilterController',
-		[ '$scope', function($scope)
+		app.controller('FilterController', function()
 		{
-			$scope.numbers =
-			[ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
-		} ]);
+			var self = this;
+			self.Dtime = new Date().getTime();
+		});
 	})();
 </script>
 </head>
 <body>
 	<div ng-controller="FilterController as filter">
 		<div>
-			<label> Limit {{numbers}} to: <input type="number" step="1"
-				ng-model="numLimit">
-				<p>Output numbers have begin: {{ numbers | limitTo:numLimit:2 }}</p>
-				<p>Output numbers: {{ numbers | limitTo:numLimit }}</p>
-			</label>
+			Date Time：{{filter.Dtime | date}} <br /> Date Time：{{filter.Dtime |
+			date:"yyyy/MM/dd"}}
 		</div>
 	</div>
 </body>

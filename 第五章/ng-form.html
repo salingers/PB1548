@@ -10,6 +10,7 @@
 	{
 		var app = angular.module('myApp',
 		[]);
+
 		app.controller('AngularController', function()
 		{
 			this.items =
@@ -39,10 +40,12 @@
 <body>
 	<div ng-controller="AngularController as angular">
 		<form ng-submit="angular.submit()">
+
 			<ng-form ng-repeat="item in angular.items"> ID： <input
 				type="text" ng-model="item.id" /> <br />
 			暱稱： <input type="text" ng-model="item.name" /> <br />
 			</ng-form>
+
 			<input type="submit" value=" 新增 " ng-click="angular.addItem()" /> <input
 				type="submit" value=" 儲存 " />
 		</form>
